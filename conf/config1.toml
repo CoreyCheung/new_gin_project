@@ -1,7 +1,7 @@
 LocalAddress = "127.0.0.1"  #内网地址，可以填写127.0.0.1，
 WebPort = "8333"    #本机服务端口，可以通过访问http://LocalAddress:WebPort/，来判断转账程序是否成功启动
 
-ExtranetAddr= ""    //外网地址
+ExtranetAddr= ""    #外网地址
 TXRPCHost="2333"    # 支付平台RPC地址
 
 
