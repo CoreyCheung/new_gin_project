@@ -33,7 +33,7 @@ func Opts() Config {
 func InitConfigs() {
 	utils.InitTomlConfigs([]*utils.ConfigMap{
 		{
-			FilePath: "./conf/config1.toml",
+			FilePath: "./conf/config.toml",
 			Pointer:  &Optional,
 		},
 	})
