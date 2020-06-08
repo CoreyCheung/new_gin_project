@@ -9,7 +9,7 @@ TXRPCHost="2333"    # 支付平台RPC地址
 LogmaxAge = 365       #日志最大保存时间（天）
 LogrotationTime = 24  #日志切割时间间隔（小时）
 LogPath="./log"
-LogFileName=""
+LogFileName="corey"
 
 #mysql配置
 MysqlStr="root:xing*2019@tcp(127.0.0.1:3306)/alf?charset=utf8&parseTime=true&loc=Local"
