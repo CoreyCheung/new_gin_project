@@ -10,6 +10,12 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// @title Gin swagger  展示在web端的title上
+// @version 1.0
+// @description Gin swagger 登录
+// @securityDefinitions.apikey ApiKeyAuth  API的认证方式
+// @in header 发送认证的方式
+// @req dto.ReqLogin  后端获取认证值得方式
 func Login(c *gin.Context) {
 	req := dto.ReqLogin{}
 	resp := dto.Response{}

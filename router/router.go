@@ -5,9 +5,12 @@ import (
 	"net/http"
 	"new_gin_project/config"
 	"new_gin_project/controller"
+	_ "new_gin_project/docs"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func RouteInit() {
@@ -16,6 +19,7 @@ func RouteInit() {
 	//route.Use(commonUtils.GinLogrusLogger())
 	route.Use(Cors())
 
+	route.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	apiV1 := route.Group("/ops_mgt/api/v1")
 	APIV1Init(apiV1)
 
