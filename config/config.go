@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"new_gin_project/utils"
+	"sync"
 )
 
 type Config struct {
@@ -26,16 +27,21 @@ type Config struct {
 
 var Optional = Config{}
 
+var s sync.Once
+
 func Opts() Config {
+	s.Do(func() {
+		utils.InitTomlConfigs([]*utils.ConfigMap{
+			{
+				FilePath: "./conf/config.toml",
+				Pointer:  &Optional,
+			},
+		})
+	})
 	return Optional
 }
 
 func InitConfigs() {
-	utils.InitTomlConfigs([]*utils.ConfigMap{
-		{
-			FilePath: "./conf/config.toml",
-			Pointer:  &Optional,
-		},
-	})
-	fmt.Println(Optional)
+
+	fmt.Println(Opts())
 }

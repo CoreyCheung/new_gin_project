@@ -15,6 +15,18 @@ type GormDB struct {
 	lock   sync.RWMutex // lock
 	Client *gorm.DB     // mysql client
 }
+// 普通分页
+type PageDTO struct {
+	List  interface{} `json:"list"`
+	Total int         `json:"total"`
+	Extra interface{} `json:"extra"` // 存放一些额外的数据
+}
+
+// 游标分页
+type CursorPageDTO struct {
+	List   interface{} `json:"list"`
+	Cursor interface{} `json:"cursor"` // 游标
+}
 
 // 本方法会给GormClient赋值，多次调用GormClient指向最后一次调用的GormDB
 func InitGormDB(dbConfig *DBConfig) *GormDB {
