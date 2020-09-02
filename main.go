@@ -16,9 +16,6 @@ func main() {
 	utils.InitLogrus(config.Opts().LogPath, config.Opts().LogFileName, time.Duration(24*config.Optional.LogmaxAge)*time.Hour, time.Duration(config.Optional.LogrotationTime)*time.Hour)
 	db.DBInit()
 	router.RouteInit()
-	fmt.Println(M(10000))
 }
-func m(int64) int64
-func M(m int64) int64 {
-	return M(m)
-}
+
+
