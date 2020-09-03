@@ -1,10 +1,9 @@
-package controller
+package http
 
 import (
 	"fmt"
 	"net/http"
 	"new_gin_project/dto"
-	"new_gin_project/service"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -30,7 +29,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	code, err := service.Login(req)
+	code, err := srv.Login(req)
 	if err != nil {
 		logrus.Errorf("Login  err: %v", err.Error())
 		resp.Code = code

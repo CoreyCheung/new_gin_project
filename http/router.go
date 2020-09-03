@@ -1,11 +1,11 @@
-package router
+package http
 
 import (
 	"fmt"
 	"net/http"
 	"new_gin_project/config"
-	"new_gin_project/controller"
 	_ "new_gin_project/docs"
+	"new_gin_project/service"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +13,14 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-func RouteInit() {
+var (
+	srv *service.Service
+	//rpcService
+	//blockService
+)
+
+func RouteInit(s *service.Service) {
+	srv = s
 	route := gin.New()
 	//log中间件
 	//route.Use(commonUtils.GinLogrusLogger())
@@ -21,6 +28,7 @@ func RouteInit() {
 
 	route.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	apiV1 := route.Group("/ops_mgt/api/v1")
+	apiV1.GET("/manager/profile", profile)
 	APIV1Init(apiV1)
 
 	http.Handle("/", route)
@@ -33,7 +41,7 @@ func APIV1Init(route *gin.RouterGroup) {
 }
 
 func AuthAPIInit(route *gin.RouterGroup) {
-	route.POST("/login", controller.Login)
+	route.POST("/login", Login)
 	//	route.POST("/send_vcode", controller.SendVerificationCode)
 
 }

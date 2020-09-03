@@ -4,8 +4,6 @@ import (
 	"new_gin_project/config"
 	"new_gin_project/dao"
 	"new_gin_project/utils"
-
-	"github.com/bingobuling/common-utilities/db"
 )
 
 var GormClient *utils.GormDB
@@ -31,10 +29,18 @@ func CreateModel(value interface{}) error {
 type Service struct {
 	dao *dao.Dao // dao
 	//	redisMid     *redis_mid.RedisMid    // redis中间层
-	gormClient *db.GormDB // gormdb
+	gormClient *utils.GormDB // gormdb
 	//	redisClient  *db.RedisDB            // redis
 	//	mpClient     *core.Client           // wechat client
 	//	smsClient    *sms.AliCloudSMSClient // ali sms client
 	//	chainClient  *chain.ChainClient     // chainClient
 	//	aliPayClient *alipay.Client         // ali pay client
+}
+
+func NewService() *Service {
+	DBInit()
+	var srv Service
+	srv.gormClient = GormClient
+	srv.dao = dao.New()
+	return &srv
 }
