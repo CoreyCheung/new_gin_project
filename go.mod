@@ -10,7 +10,7 @@ require (
 	github.com/chanxuehong/util v0.0.0-20200304121633-ca8141845b13
 	github.com/cloudflare/cfssl v1.4.1
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
-	github.com/gin-gonic/gin v1.6.3
+	github.com/gin-gonic/gin v1.7.4
 	github.com/go-openapi/spec v0.19.8 // indirect
 	github.com/go-openapi/swag v0.19.9 // indirect
 	github.com/go-redis/redis v6.15.7+incompatible
